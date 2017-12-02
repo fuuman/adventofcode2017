@@ -22,7 +22,17 @@ def solve(spreadsheet):
 
 
 def solve2(spreadsheet):
-    pass
+    checksum = 0
+    lines = spreadsheet.split('\n')
+    for line in lines:
+        for number in sorted(line.split(), reverse=True):
+            number = int(number)
+            others = list(map(int, line.split()))
+            others.remove(number)
+            for n in [x for x in others if x <= number / 2]:
+                if number % n == 0:
+                    checksum += int(number / n)
+    return checksum
 
 
 if __name__ == '__main__':
