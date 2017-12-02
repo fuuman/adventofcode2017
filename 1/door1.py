@@ -29,7 +29,12 @@ def solve(puzzle):
     return sum([int(z) for i, z in enumerate(puzzle) if z == (puzzle[i+1] if i+1 < len(puzzle) else puzzle[0])])
 
 
+def solve2(puzzle):
+    steps = int(len(puzzle) / 2)
+    return 2 * sum([int(z) for i, z in enumerate(puzzle) if z == (puzzle[i + steps] if i < steps else 0)])
+
+
 if __name__ == '__main__':
-    captcha = solve(INPUT)
-    print(captcha)
+    print("Part One: {}".format(solve(INPUT)))
+    print("Part Two: {}".format(solve2(INPUT)))
 
